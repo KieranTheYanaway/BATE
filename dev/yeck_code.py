@@ -300,7 +300,7 @@ def locate():
 
     bestot = ot
     bestrms = float('inf')
-[O    params = [(i, j, k, lat_val, lon_val, height_val) for i, lat_val in enumerate(lats) for j, lon_val in enumerate(lons) for k, height_val in enumerate(heights)]
+    params = [(i, j, k, lat_val, lon_val, height_val) for i, lat_val in enumerate(lats) for j, lon_val in enumerate(lons) for k, height_val in enumerate(heights)]
     
     with Pool() as pool:
         results = pool.map(calculate_rms, params)
