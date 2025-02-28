@@ -149,11 +149,12 @@ for i in range(len(st)):
 toremove.reverse()
 for i in toremove:
     st.pop(i)
-    
+
+
+st.resample(10.0)
 st.merge(fill_value='interpolate')
 st.detrend('demean')
 st.detrend('linear')
-st.resample(10.0)
 st.taper(0.05)
 stog = st.copy()
 
