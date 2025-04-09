@@ -150,11 +150,12 @@ for i in range(len(st)):
 toremove.reverse()
 for i in toremove:
     st.pop(i)
-    
+
+
+st.resample(10.0)
 st.merge(fill_value='interpolate')
 st.detrend('demean')
 st.detrend('linear')
-st.resample(10.0)
 st.taper(0.05)
 stog = st.copy()
 srcs, src2, distdict, maxdist, factor = processData(stog.copy(),inv,args.starttime,float(4.4),float(1.4),args.length,args.latitude,args.longitude, args.soundvelocity,10.)
