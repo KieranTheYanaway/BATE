@@ -117,6 +117,7 @@ if os.path.isdir(name):
     st = read(name + "/waveforms/*.mseed")
     inv = read_inventory(name + "/stations/*.xml")
     print("Data found in " + name)
+    print(st[0].stats)
 else:
     print("Data not found, downloading")
     get_data(args.latitude, args.longitude, args.starttime, args.length, args.maxdistance, args.provider, name)
@@ -156,10 +157,8 @@ st.detrend('linear')
 st.resample(10.0)
 st.taper(0.05)
 stog = st.copy()
-
-print(args.length)
 srcs, src2, distdict, maxdist, factor = processData(stog.copy(),inv,args.starttime,float(4.4),float(1.4),args.length,args.latitude,args.longitude, args.soundvelocity,10.)
-
+print(src2)
 recordSection = figure(height=700, width=700, x_axis_type="datetime")
 recordSection.x_range.max_interval = timedelta(seconds=args.length*1.25)
 
